@@ -9,6 +9,9 @@ public class StockServices {
 	}
 
 	public static void removeProducts(Product product, Integer quantity) {
+		if(quantity > product.getQuantity()) {
+			throw new IllegalArgumentException("Not enough products in stock");
+		}
 		product.setQuantity(product.getQuantity() - quantity); // to-do programação defensiva
 	}
 	
